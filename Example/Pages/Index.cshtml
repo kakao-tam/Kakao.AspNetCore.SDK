@@ -1,0 +1,36 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <a href="/UserApi/loginWithKakaoAccount">
+        <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" />
+    </a>
+    @if (!String.IsNullOrEmpty(Model.AccessToken))
+    {
+        <p>
+            <strong>AccessToken:</strong> <code>@Model.AccessToken</code>
+        </p>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>function REST_Call(path) {
+                $.ajax({
+                    type: "GET",
+                    url: path,
+                    success: (data) => { console.log(data); $('#contents').html(data); }
+                });
+            }</script>
+
+        <p>
+            <button onclick="REST_Call('/UserApi/me')">프로필 조회 </button>
+        </p>
+        <p>
+            <textarea id="contents" rows='20' cols='100'></textarea>
+        </p>
+    }
+</div>
+
