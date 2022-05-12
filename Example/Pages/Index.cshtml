@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -7,7 +7,7 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <a href="/UserApi/loginWithKakaoAccount">
+    <a href="/oauth/authorize">
         <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" />
     </a>
     @if (!String.IsNullOrEmpty(Model.AccessToken))
@@ -26,7 +26,16 @@
             }</script>
 
         <p>
-            <button onclick="REST_Call('/UserApi/me')">프로필 조회 </button>
+            <button onclick="REST_Call('/v2/user/me')">프로필 조회 </button>
+        </p>
+        <p>
+            <button onclick="REST_Call('/v1/user/access_token_info')">토큰 정보 보기 </button>
+        </p>
+        <p>
+            <button onclick="REST_Call('/v1/user/logout')">로그아웃 </button>
+        </p>
+        <p>
+            <button onclick="REST_Call('/v1/user/unlink')">연결끊기 </button>
         </p>
         <p>
             <textarea id="contents" rows='20' cols='100'></textarea>
