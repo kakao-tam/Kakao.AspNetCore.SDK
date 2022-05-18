@@ -1,4 +1,4 @@
-@page
+﻿@page
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -18,29 +18,58 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>function REST_Call(path) {
+                $('#contents').html("");
                 $.ajax({
                     type: "GET",
                     url: path,
                     success: (data) => { console.log(data); $('#contents').html(data); }
                 });
             }</script>
+        <table>
+            <tr>
+                <td colsapn="3"><h1>카카오 로그인</h1></td>
+            </tr>
+            <tr>
+                <td>사용자 정보 가져오기</td>
+                <td><button onclick="REST_Call('/v2/user/me')">API Call </button></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>토큰 정보 보기</td>
+                <td><button onclick="REST_Call('/v1/user/access_token_info')">API Call </button></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>로그아웃</td>
+                <td><button onclick="REST_Call('/v1/user/logout')">API Call </button></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>연결끊기</td>
+                <td><button onclick="REST_Call('/v1/user/unlink')">API Call </button></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colsapn="3"><h1>카카오톡 소셜</h1></td>
+            </tr>
+            <tr>
+                <td>프로필 가져오기</td>
+                <td><button onclick="REST_Call('/v1/api/talk/profile')">API Call </button></td>
+                <td><button onclick="REST_Call('/Talk/profile.json')">Json Object </button></td>
+                <td><button onclick="REST_Call('/Talk/profile.model')">Model Object </button></td>
+            </tr>
+            <tr>
+                <td>친구 목록 가져오기</td>
+                <td><button onclick="REST_Call('/v1/api/talk/friends')">API Call </button></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
 
-        <p>
-            <button onclick="REST_Call('/v2/user/me')">프로필 조회 </button>
-        </p>
-        <p>
-            <button onclick="REST_Call('/v1/user/access_token_info')">토큰 정보 보기 </button>
-        </p>
-        <p>
-            <button onclick="REST_Call('/v1/user/logout')">로그아웃 </button>
-        </p>
-        <p>
-            <button onclick="REST_Call('/v1/user/unlink')">연결끊기 </button>
-        </p>
-        <h1>카카오톡 소셜</h1>
-        <p>
-            <button onclick="REST_Call('/v1/api/talk/profile')">프로필 가져오기 </button>
-        </p>
         <p>
             <textarea id="contents" rows='20' cols='100'></textarea>
         </p>
