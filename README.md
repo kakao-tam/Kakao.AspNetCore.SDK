@@ -1,2 +1,2 @@
 # Kakao.AspNetCore.SDK
-Kakao API C# Library
+Kakao API C# Library Example
