@@ -38,8 +38,8 @@
             <tr>
                 <td>사용자 정보 가져오기</td>
                 <td><button onclick="REST_Call('/v2/user/me')">API Call </button></td>
-                <td></td>
-                <td></td>
+                <td><button onclick="REST_Call('/User/me.json')">Json Object </button></td>
+                <td><button onclick="REST_Call('/User/me.model')">Model Object </button></td>
             </tr>
             <tr>
                 <td>토큰 정보 보기</td>
@@ -92,6 +92,18 @@
             <tr>
                 <td>친구 목록 가져오기</td>
                 <td><button onclick="REST_Call('/v1/api/talk/friends')">API Call </button></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colsapn="3"><h1>카카오톡 채널</h1></td>
+            </tr>
+            <tr>
+                <td>
+                    카카오톡 채널 관계 확인하기<br />
+                    <input type="text" id="channel_public_ids" value='["_xgTNZs"]' />
+                </td>
+                <td><button onclick="REST_Call('/v1/api/talk/channels?channel_public_ids='+$('#channel_public_ids').val())">API Call </button></td>
                 <td></td>
                 <td></td>
             </tr>

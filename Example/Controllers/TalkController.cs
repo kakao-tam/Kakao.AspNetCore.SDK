@@ -15,9 +15,9 @@ namespace Example.Controllers
         }
 
         [Route("~/Talk/profile.model")]
-        public string profileModel()
+        public string? profileModel()
         {
-            TalkProfile? rtn = new TalkProfile();
+            TalkProfile rtn = new TalkProfile();
             new TalkApiClient().profile((profile, error) =>
             {
                 if (error != null)
@@ -34,7 +34,7 @@ namespace Example.Controllers
                 }
             });
 
-            return rtn.ToString();
+            return rtn?.ToString();
         }
     }
 }
