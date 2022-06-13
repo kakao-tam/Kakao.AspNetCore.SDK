@@ -30,6 +30,17 @@
                     url: path,
                     success: (data) => { console.log(data); $('#contents').html(data); }
                 });
+            }
+
+            function REST_Call_JsonBody(path, id) {
+                var json = $('#' + id).val()
+                $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(json),
+                    url: path,
+                    contentType: "application/json",
+                    success: (data) => { console.log(data); $('#contents').html(data); }
+                });
             }</script>
         <table>
             <tr>
@@ -50,6 +61,12 @@
             <tr>
                 <td>로그아웃</td>
                 <td><button onclick="REST_Call('/v1/user/logout')">API Call </button></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>카카오계정과 함께 로그아웃</td>
+                <td><button onclick="location.href='/oauth/logout'">API Call </button></td>
                 <td></td>
                 <td></td>
             </tr>
@@ -107,8 +124,9 @@
                 <td></td>
                 <td></td>
             </tr>
-        </table>
 
+        </table>
+        <br />
         <p>
             <textarea id="contents" rows='20' cols='100'></textarea>
         </p>
